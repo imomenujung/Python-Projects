@@ -7,7 +7,7 @@ from PIL import Image
 from io import BytesIO
 
 # Title
-st.title("Sistem Rekomendasi Lagu Berdasarkan Nama")
+st.title("KJR : Rekomendasi Lagu Untukmu")
 
 # Load data
 @st.cache
@@ -18,7 +18,7 @@ def load_data():
 df = load_data()
 
 # Preprocessing data
-features = ['danceability', 'energy', 'loudness', 'speechiness',
+features = ['danceability', 'energy', 'speechiness',
             'acousticness', 'instrumentalness', 'liveness', 'valence']
 
 for feature in features:
@@ -49,10 +49,10 @@ def recommend_songs(song_name, top_n=5):
     return df.iloc[song_indices][['name', 'artist', 'img']]
 
 # Input form
-song_name_input = st.text_input("Masukkan nama lagu:")
+song_name_input = st.text_input("Masukkan Namamu:")
 
 # Button to submit
-if st.button("Cari Lagu Serupa"):
+if st.button("Kira-kira apa ya lagu yang cocok untukmu"):
     if song_name_input:
         recommendations = recommend_songs(song_name_input)
 
